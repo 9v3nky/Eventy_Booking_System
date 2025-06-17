@@ -1,0 +1,39 @@
+.custom-toolbar {
+  background: linear-gradient(90deg, #1976d2, #2196f3);
+  color: white;
+}
+
+.toolbar-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+.user-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px;
+}
+
+.search-bar {
+  width: 100%;
+}
+
+mat-table {
+  width: 90%;
+  margin: 0 auto;
+}
+
+mat-paginator {
+  margin: 16px auto;
+}
+.table-container {
+  width: 80%;
+  overflow-x: auto;
+  margin-left: 10%;
+}
+::ng-deep mat-table {
+  background-color: rgb(245, 245, 245) !important;
+}

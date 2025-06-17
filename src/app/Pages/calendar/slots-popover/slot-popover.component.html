@@ -1,0 +1,54 @@
+<h2 mat-dialog-title>
+  {{ isEditing ? 'Edit Slot' : isBooking ? 'Booking Options' : 'Create Slot' }}
+</h2>
+
+<mat-dialog-content *ngIf="!isBooking">
+  <form [formGroup]="slotForm">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width disable_field ">
+      <mat-label>Date</mat-label>
+      <input matInput formControlName="date" type="date" readonly="true" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Start Time</mat-label>
+      <mat-select formControlName="start_time">
+        <mat-option *ngFor="let time of getStartTimeOptions()" [value]="time">{{ time }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>End Time</mat-label>
+      <mat-select formControlName="end_time">
+        <mat-option *ngFor="let time of getEndTimeOptions()" [value]="time">{{ time }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancel</button>
+
+  <ng-container *ngIf="isBooking">
+    <button mat-raised-button color="warn" *ngIf="data.actionType == 'unsubscribe'" (click)="unbookSlot()">Un Subscribe</button>
+    <button mat-raised-button color="primary" *ngIf="data.actionType !== 'unsubscribe'" (click)="bookSlot()">Subscribe</button>
+  </ng-container>
+
+  <ng-container *ngIf="!isBooking && isEditing">
+    <button mat-raised-button color="primary" (click)="deleteSlot()" [disabled]="slotForm.invalid">
+      Delete Slot
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="!isBooking">
+    <button mat-raised-button color="primary" (click)="saveSlot()" [disabled]="slotForm.invalid">
+      {{ isEditing ? 'Update' : 'Create' }}
+    </button>
+  </ng-container>
+</mat-dialog-actions>

@@ -1,0 +1,30 @@
+.footer-toolbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #1976d2;
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+  padding: 8px 0;
+  z-index: 1000;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+.footer-icon {
+  color: white; 
+}
+
+.footer-label {
+  font-size: 13px;
+  margin-top: -2px; 
+}

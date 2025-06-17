@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="footer-toolbar">
+   <div class="footer-item" [routerLink]="['/dashboard']">
+    <mat-icon class="footer-icon">dashboard</mat-icon>
+    <div class="footer-label">Dashboard</div>
+  </div>
+  <div class="footer-item" [routerLink]="['/user']" *ngIf="isAdmin">
+    <mat-icon class="footer-icon">group</mat-icon>
+    <div class="footer-label">User</div>
+  </div>
+
+  <div class="footer-item" [routerLink]="['/category']" *ngIf="isAdmin">
+      <mat-icon class="footer-icon">category</mat-icon>
+    <div class="footer-label">Category</div>
+  </div>
+
+  <div class="footer-item" [routerLink]="['/preference']" *ngIf="!isAdmin">
+    <mat-icon class="footer-icon">check_circle</mat-icon>
+    <div class="footer-label">Preference</div>
+  </div>
+
+  <div class="footer-item" [routerLink]="['/calendar']">
+      <mat-icon class="footer-icon">calendar_today</mat-icon>
+    <div class="footer-label">Calendar </div>
+  </div>
+</mat-toolbar>

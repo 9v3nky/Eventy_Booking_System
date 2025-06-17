@@ -1,0 +1,36 @@
+<div class="login-wrapper">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title class="login-title">🔐 Welcome Back</mat-card-title>
+      <br>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <div *ngIf="error" class="error-message">
+                    <mat-icon>error</mat-icon>
+                    <span>{{ error }}</span>
+                </div>
+
+        <button mat-raised-button color="primary" class="full-width" type="submit" [disabled]="form.invalid">Login</button>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions class="register-redirect">
+      <span>Don't have an account?</span>
+      <button mat-button color="accent" (click)="goToRegister()" >Register</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

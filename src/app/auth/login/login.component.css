@@ -1,0 +1,54 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f0f4f8;
+}
+mat-card-header{
+    padding-bottom: 20px;
+}
+
+.login-card {
+  width: 400px;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: auto;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.register-redirect {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  margin: 0.5rem 0;
+  background-color: #ffebee;
+  border-radius: 8px;
+  color: #d32f2f;
+  font-size: 0.9rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.error-message mat-icon {
+  font-size: 1.2rem;
+}

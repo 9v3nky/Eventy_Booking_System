@@ -1,0 +1,43 @@
+.custom-toolbar {
+  background: linear-gradient(90deg, #1976d2, #2196f3);
+  color: white;
+}
+
+.toolbar-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.filter-add-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;       
+  margin-bottom: 20px;
+  padding: 0 2%;           
+}
+
+.filter-field {
+  min-width: 200px;
+  margin-right: 2%;        
+}
+
+button[mat-raised-button] {
+  margin-left: 2%;         
+}
+.table-container {
+  width: 95%;
+  overflow-x: auto;
+  margin-left: 2.5%;
+}
+::ng-deep mat-table {
+  background-color: rgb(245, 245, 245) !important;
+}
+
+.main-div{
+  width:90%;
+  margin-left: 5%;
+}

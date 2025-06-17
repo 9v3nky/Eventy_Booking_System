@@ -1,0 +1,73 @@
+<mat-toolbar color="primary" class="custom-toolbar">
+  <span class="center-title">Category</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
+
+<div class="main-div">
+  <div class="filter-add-container">
+    <mat-form-field appearance="fill" class="filter-field">
+      <mat-label>Status</mat-label>
+      <mat-select [(value)]="selectedStatus" (selectionChange)="loadCategories()">
+        <mat-option value="1">Active</mat-option>
+        <mat-option value="0">Inactive</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="spacer"></div>
+
+    <button mat-raised-button color="primary" (click)="addCategory()">
+      <mat-icon>add</mat-icon> Add Category
+    </button>
+  </div>
+
+  <mat-spinner *ngIf="loading" style="margin: auto;"></mat-spinner>
+  <div class="table-container">
+    <mat-table *ngIf="!loading" [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="sno">
+        <mat-header-cell *matHeaderCellDef> S.No </mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index"> {{ i + 1 }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Category Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="created_by">
+        <mat-header-cell *matHeaderCellDef> Created/Edited By </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.created_by }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.status == 1 ? 'Active' : 'Inactive' }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" (click)="editCategory(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" *ngIf="element.status === 1" (click)="confirmDelete(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" *ngIf="element.status === 0" (click)="recoverCategory(element)">
+            <mat-icon>restore</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [length]="totalItems" [pageSize]="10" (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+</div>
+<app-footer-nav></app-footer-nav>

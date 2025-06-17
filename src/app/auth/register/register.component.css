@@ -1,0 +1,62 @@
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f0f4f8;
+}
+mat-card-header{
+    padding-bottom: 20px;
+}
+.register-card {
+  width: 400px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  margin: 0.5rem 0;
+  background-color: #ffebee;
+  border-radius: 8px;
+  color: #d32f2f;
+  font-size: 0.9rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.error-message mat-icon {
+  font-size: 1.2rem;
+}
+
+.snackbar-success {
+  background-color: #4caf50; /* Green */
+  color: #fff;
+  font-weight: 500;
+}
+
+.snackbar-error {
+  background-color: #f44336; /* Red */
+  color: #fff;
+  font-weight: 500;
+}
+
+.snackbar-warning {
+  background-color: #ff9800; /* Orange */
+  color: #fff;
+  font-weight: 500;
+}

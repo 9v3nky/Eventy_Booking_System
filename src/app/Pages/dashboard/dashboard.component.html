@@ -1,0 +1,42 @@
+<mat-toolbar color="primary" class="custom-toolbar">
+  <span class="center-title">Dashboard</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="logout()" class="custom-btn"><b>Logout</b></button>
+</mat-toolbar>
+<div class="dashboard-wrapper">
+  
+
+  <div class="dashboard-grid">
+    <ng-container *ngIf="!isAdmin">
+      <mat-card class="dashboard-card" (click)="goTo('preference')">
+        <mat-icon>favorite</mat-icon>
+        <p>Preferences</p>
+      </mat-card>
+
+      <mat-card class="dashboard-card" (click)="goTo('calendar')">
+        <mat-icon>event</mat-icon>
+        <p>Calendar</p>
+      </mat-card>
+    </ng-container>
+
+    <!-- Admin: Users, Categories, Calendar -->
+    <ng-container *ngIf="isAdmin">
+      <mat-card class="dashboard-card" (click)="goTo('user')">
+        <mat-icon>supervisor_account</mat-icon>
+        <p>Manage Users</p>
+      </mat-card>
+
+      <mat-card class="dashboard-card" (click)="goTo('category')">
+        <mat-icon>category</mat-icon>
+        <p>Manage Categories</p>
+      </mat-card>
+
+      <mat-card class="dashboard-card" (click)="goTo('calendar')">
+        <mat-icon>event</mat-icon>
+        <p>Manage Calendar</p>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>
+
+<app-footer-nav></app-footer-nav>

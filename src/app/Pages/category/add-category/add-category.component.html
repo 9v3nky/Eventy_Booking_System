@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Edit' : 'Add' }} Category</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" style="padding: 16px;">
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Category Name</mat-label>
+    <input matInput placeholder="Enter category name" formControlName="name" />
+  </mat-form-field>
+
+  <div style="margin-top: 16px; text-align: center;">
+    <button mat-stroked-button type="button" (click)="onCancel()">Cancel</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid || shouldEnable()" >
+        {{ isEdit ? 'Update' : 'Add' }}
+    </button>
+  </div>
+</form>

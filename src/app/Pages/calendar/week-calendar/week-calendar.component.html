@@ -1,0 +1,97 @@
+<mat-toolbar color="primary" class="custom-toolbar">
+  <span class="center-title">Weekly Event Booking Calendar </span>
+  <span class="spacer"></span>
+  <button mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
+
+<div class="calendar-container">
+  <div class="calendar-toolbar">
+    <mat-form-field appearance="fill" class="category-filter" style="width: 45%;">
+      <mat-label>Select Categories</mat-label>
+      <mat-select multiple [(ngModel)]="selectedCategories" (selectionChange)="onCategoryChange()">
+        <mat-option *ngFor="let cat of categories" [value]="cat.id">
+          {{ cat.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="week-controls" style="width: 50%;">
+      <button mat-raised-button (click)="prevWeek()">⬅️ Previous Week</button>
+      <span class="week-range">{{ weekDates[0] }} ➡ {{ weekDates[4] }}</span>
+      <button mat-raised-button (click)="nextWeek()">Next Week ➡️</button>
+    </div>
+  </div>
+
+  <div *ngIf="selectedCategories.length === 0" class="no-category-msg">
+    ⚠️ Please select category to see calendar.
+  </div>
+
+  <table class="calendar-table" *ngIf="selectedCategories.length">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th *ngFor="let time of timeSlots">{{ time }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let date of weekDates">
+        <ng-container *ngFor="let catId of selectedCategories; let catIndex = index">
+          <tr>
+            <td *ngIf="catIndex === 0" [attr.rowspan]="selectedCategories.length" class="date-cell">
+              <div>{{ date }}</div>
+              <div class="day-name">{{ getDayName(date) }}</div>
+            </td>
+            <td class="category-cell">{{ getCategoryName(catId) }}</td>
+            <ng-container *ngFor="let time of timeSlots">
+              <ng-container *ngIf="!shouldSkip(date, time, catId); else skipCell">
+                <td [attr.colspan]="getSlotColspan(date, time, catId)">
+                  <div
+                    class="slot-cell"
+                    [ngClass]="{
+                        'empty': !getSlot(date, time, catId),
+                        'mine': getSlot(date, time, catId)?.booked_by === username,
+                        'booked': getSlot(date, time, catId)?.booked_by && getSlot(date, time, catId)?.booked_by !== username,
+                        'available': getSlot(date, time, catId) && !getSlot(date, time, catId)?.booked_by,
+                        'past': isPast(date)
+                    }"
+                    [matTooltip]="
+                        isPast(date)
+                        ? 'Past slot'
+                        : isAdmin
+                            ? !getSlot(date, time, catId)?.booked_by
+                            ? 'Click to edit slot'
+                            : 'Booked – not editable'
+                            : !getSlot(date, time, catId)
+                            ? 'Slot not created'
+                            : getSlot(date, time, catId)?.booked_by === username
+                                ? 'Click to manage (unsubscribe)'
+                                : !getSlot(date, time, catId)?.booked_by
+                                ? 'Click to subscribe'
+                                : 'Booked by someone else'"
+                    [style.pointerEvents]="
+                        isPast(date) ||
+                        (isAdmin && getSlot(date, time, catId)?.booked_by) ||
+                        (!isAdmin && getSlot(date, time, catId)?.booked_by && getSlot(date, time, catId)?.booked_by !== username)
+                        ? 'none'
+                        : 'auto'"
+                    (click)="openSlotPopover(getSlot(date, time, catId), date, time, catId)"
+                    >
+                    <ng-container *ngIf="getSlot(date, time, catId)">
+                      <strong>{{ getSlot(date, time, catId).start_time }} - {{ getSlot(date, time, catId).end_time }}</strong><br />
+                      <span *ngIf="getSlot(date, time, catId)?.booked_by">Subscribed by: {{ getSlot(date, time, catId).booked_by }}</span>
+                    </ng-container>
+                    <ng-container *ngIf="!getSlot(date, time, catId)">
+                      <em>Empty</em>
+                    </ng-container>
+                  </div>
+                </td>
+              </ng-container>
+              <ng-template #skipCell></ng-template>
+            </ng-container>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+<app-footer-nav></app-footer-nav>

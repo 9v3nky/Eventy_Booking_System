@@ -1,0 +1,22 @@
+.full-width {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+mat-dialog-content {
+  min-width: 300px;
+}
+
+mat-dialog-actions {
+  margin-top: 16px;
+}
+
+button + button {
+  margin-left: 8px;
+}
+
+::ng-deep .disable_field, .disable_field {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}

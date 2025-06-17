@@ -1,0 +1,242 @@
+.custom-toolbar {
+  background: linear-gradient(90deg, #1976d2, #2196f3);
+  color: white;
+}
+
+.toolbar-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+.calendar-container{
+  width:80%;
+  margin-left: 10%;
+  padding-top: 1%;
+}
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.calendar-table th,
+.calendar-table td {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 8px;
+}
+
+.date-cell {
+  background-color: #f3f3f3;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.day-name {
+  font-size: 12px;
+  font-weight: normal;
+  color: #555;
+  margin-top: 2px;
+}
+
+.category-cell {
+  font-weight: 600;
+  background-color: #f9f9f9;
+}
+
+.slot-cell {
+  padding: 6px;
+  min-width: 80px;
+  border-radius: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.slot-cell.booked {
+  background-color: #ffe5e5;
+  color: #b30000;
+  pointer-events: none;
+}
+
+.slot-cell.mine {
+  background-color: #d6eaff;
+  color: #004a99;
+}
+
+.slot-cell.empty {
+  background-color: #f0f0f0;
+  color: #888;
+}
+
+.slot-cell.past {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.calendar-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.week-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.week-range {
+  font-weight: bold;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.category-filter {
+  min-width: 250px;
+  flex-grow: 1;
+}
+
+.slot-cell.mine {
+  background-color: #cce0ff; 
+  color: #003366;
+}
+
+.slot-cell.booked {
+  background-color: #ffd6d6;
+  color: #a30000;
+}
+
+.slot-cell.empty {
+  background-color: #f0f0f0; 
+  color: #888;
+}
+
+.slot-cell.past {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.slot-cell {
+  cursor: pointer;
+}
+
+.slot-cell.booked:not(.mine),
+.slot-cell.past {
+  cursor: not-allowed;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.calendar-table th,
+.calendar-table td {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 8px;
+}
+
+.date-cell {
+  background-color: #f3f3f3;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.category-cell {
+  font-weight: 600;
+  background-color: #f9f9f9;
+}
+
+.slot-cell {
+  padding: 6px;
+  min-width: 80px;
+  border-radius: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.slot-cell.booked {
+  background-color: #ffd6d6; 
+  color: #a30000;
+}
+
+.slot-cell.mine {
+  background-color: #cce0ff;
+  color: #003366;
+}
+
+.slot-cell.empty {
+  background-color: #f0f0f0; 
+  color: #888;
+}
+
+.slot-cell.past {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.calendar-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.week-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.week-range {
+  font-weight: bold;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.category-filter {
+  min-width: 250px;
+  flex-grow: 1;
+}
+
+.slot-cell.booked:not(.mine),
+.slot-cell.past {
+  cursor: not-allowed;
+}
+
+.slot-cell.mine {
+  background-color: #d4f7d4;
+}
+
+.slot-cell.booked {
+  background-color: #ffd6d6; 
+  color: #a30000;
+}
+
+.slot-cell.empty {
+  background-color: #f0f0f0;
+  color: #888;
+}
+
+.slot-cell.available {
+  background-color: #d0e7ff; 
+  color: #004080;
+}
+
+.week-controls {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;           
+  width: 50%;                    
+  margin: 0 auto;               
+}

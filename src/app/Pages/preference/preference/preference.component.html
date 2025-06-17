@@ -1,0 +1,29 @@
+<mat-toolbar color="primary" class="custom-toolbar">
+  <span class="center-title">Preferences</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
+<mat-card *ngIf="!loading; else loadingTemplate">
+  <h2 style="text-align: center;">Your Preferences</h2>
+  <div class="preference-container">
+    <mat-checkbox
+      *ngFor="let cat of categories"
+      [checked]="isSelected(cat.id)"
+      (change)="togglePreference(cat.id)"
+    >
+      {{ cat.name }}
+    </mat-checkbox>
+  </div>
+
+  <div class="button-group">
+    <button mat-flat-button color="primary" (click)="updatePreferences()" [disabled]="!hasChanges()">Update Preferences</button>
+    <button mat-stroked-button color="warn" (click)="discardChanges()" [disabled]="!hasChanges()">Discard Changes</button>
+  </div>
+</mat-card>
+
+<ng-template #loadingTemplate>
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+<app-footer-nav></app-footer-nav>
